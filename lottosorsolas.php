@@ -7,13 +7,19 @@ class lottosorsolas {
 	// ez hozza létre a sorsolást
 	function __construct($hanyas)
 	{
+		if($hanyas==5)
+		{
+			$this->hanyas=5;
+			$this->szamokszama=90;
+			$this->oszlop=15;
+		}
 	}
 	function sorsolas()
 	{
 		$kihuzottak=0;
-		while($kihuzottak<5)
+		while($kihuzottak<$this->hanyas)
 		{
-				$sorsoltszam=rand(1,90);
+				$sorsoltszam=rand(1,$this->szamokszama);
 				if(!isset($tomb[$sorsoltszam]))
 				{
 						$tomb[$sorsoltszam]=1;
@@ -24,13 +30,11 @@ class lottosorsolas {
 	}
 	function lottoszelveny($sorsolt)
 	{
-		$szamokszama=90;
-		$oszlop=15;
 		echo '<table border="1">';
 		
-		for($i=1; $i<=$szamokszama; $i++)
+		for($i=1; $i<=$this->szamokszama; $i++)
 		{
-			if($i%$oszlop==1)
+			if($i%$this->oszlop==1)
 			{
 				echo "<tr>";
 			}
